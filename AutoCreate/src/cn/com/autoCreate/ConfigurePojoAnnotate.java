@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import cn.com.autoCreate.configurePojo.ConfigurePojo;
+import cn.com.autoCreate.util.Constants;
 
 public class ConfigurePojoAnnotate
 {
@@ -19,7 +20,7 @@ public class ConfigurePojoAnnotate
 
 	public static void main(String args[])
 	{
-		PropertyConfigurator.configure("config/log4j.properties");
+		PropertyConfigurator.configure(Constants.log4jProp);
 		ConfigurePojo configurepojo = new ConfigurePojo();
 		if (configurepojo.findPojoPathByHbmXml(configurepojo.readCfgXml()) != null)			
 			configurepojo.configPojo(configurepojo.findPojoPathByHbmXml(configurepojo.readCfgXml()));

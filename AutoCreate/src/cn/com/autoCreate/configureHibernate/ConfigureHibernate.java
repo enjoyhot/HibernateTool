@@ -220,7 +220,7 @@ public class ConfigureHibernate extends JFrame implements ActionListener{
 					Document document = saxbuilder.build(file);
 					Element element = document.getRootElement();
 					Element element1 = element.getChild("class");
-					element1.setAttribute("name", (new StringBuilder()).append(Constants.packageHead).append(projectName).append(".").append(moduleName).append(".model.").append(as1[k]).toString());					
+					element1.setAttribute("name", (new StringBuilder()).append(Constants.packageHead).append(projectName).append(".").append(moduleName).append(Constants.pojoAddDir).append(as1[k]).toString());					
 					element1.removeAttribute("catalog");
 					//Ð´ÈëÎÄ¼þ
 					XMLOutputter xmloutputter = new XMLOutputter();

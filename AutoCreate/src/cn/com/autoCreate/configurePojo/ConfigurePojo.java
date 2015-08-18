@@ -93,7 +93,7 @@ public class ConfigurePojo
 
 	public void configPojo(String s)
 	{
-		logger.info(s);
+		logger.info("configPojo");
 		String s1;
 		String as[];
 		s1 = System.getProperty("user.dir");

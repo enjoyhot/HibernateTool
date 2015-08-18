@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="autoCreate">
+    <!-- 引入属性配置文件 -->
+	<property file="config/build.properties" />
+	
+	<!--
+	<! 初始化配置 >
+	<target name="runInitConfig" description="初始化配置">
+		<java classname="cn.com.sandi.autoCreate.InitConfig" fork="true">
+		    <classpath>
+                <path location="${buildResource.dir}/lib/AntLib/sandi-autoCreate.jar"></path>
+            </classpath>
+        </java>
+	</target>
+	-->
+	
+	<!-- 创建实体化类 -->
+	<target name="runCreatePojo" description="创建实体化类">
+        <ant antfile="buildPojo.xml" target="createPojo" inheritAll="false" />
+	</target>
+	<!-- 创建带自增主键实体化类 -->
+	<target name="runCreatePojoWithAutoPK" description="创建带自增主键实体化类">
+        <ant antfile="buildPojo.xml" target="createPojoWithAutoPK" inheritAll="false" />
+	</target>
+	
+	<!-- 合并压缩JS和CSS -->
+	<target name="runCompress" description="合并压缩CSS和JS">
+		
+        <echo message="Start building the buildCompress file. Please wait..." />
+		<java classname="cn.com.autoCreate.CompressCssAndJs" fork="true">
+		    <classpath>
+                <path location="${buildResource.dir}/lib/AntLib/sandi-autoCreate.jar"></path>
+            </classpath>
+        </java>
+        <echo message="End up building the buildCompress file." />
+		
+        <echo message="------Start compressing the CSS And JS file. Please wait...------" />      
+		<ant antfile="buildCompress.xml" target="uglify" inheritAll="false" />
+		<ant antfile="buildCompress.xml" target="minifyCss" inheritAll="false" />
+		<echo message="End up compressing the CSS And JS file." />
+		
+		<ant antfile="buildCompress.xml" target="delete" inheritAll="false" />        
+		
+        <echo message="Start cleaning the buildCompress file. Please wait..." />
+        <java classname="cn.com.autoCreate.CleanBuildCompressXml" fork="true">
+		    <classpath>
+                <path location="${buildResource.dir}/lib/AntLib/sandi-autoCreate.jar"></path>
+            </classpath>
+        </java>
+        <echo message="------End up cleaning the buildCompress file.------" />
+        
+	</target>
+</project>

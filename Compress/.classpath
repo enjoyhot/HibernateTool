@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/freemarker-2.3.13.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/hibernate-core-4.1.10.Final.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/hibernate-tools.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/jtidy-r8-20060801.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/mysql-connector-java-5.1.15-bin.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/slf4j-api.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/slf4j-log4j12.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/ant.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/apache/ant/ant/1.8.4/ant-1.8.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/jdom-2.0.5.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/sandi-autoCreate.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/uglifyjs.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/yuicompressor.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/cglib-full-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/hibernatelib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/AntLib/javax.persistence_2.0.3.v201010191057.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.7"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

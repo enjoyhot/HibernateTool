@@ -65,9 +65,9 @@
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
+    <target depends="init" name="build-project" >
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="../bin" includeantruntime="false" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="../bin" includeantruntime="false" source="${source}" target="${target}" fork="yes">
             <src path="../src"/>
             <classpath refid="autoCreate.classpath"/>
         </javac>
@@ -102,7 +102,8 @@
     		<attribute name="Main-Class" value="cn.com.autoCreate.ConfigureHbmCfg 
     			cn.com.autoCreate.ConfigConnection 
     			cn.com.autoCreate.ConfigurePojoAnnotate 
-    			cn.com.autoCreate.CompressCssAndJs"/>
+    			cn.com.autoCreate.CompressCssAndJs 
+    			cn.com.autoCreate.CleanBuildCompressXml"/>
     		<attribute name="Class-Path" value="${libs}"/>
     	</manifest>
     	</jar>

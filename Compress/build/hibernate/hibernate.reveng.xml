@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+	<schema-selection match-schema="VENUSPB"/>
+	<type-mapping>
+        <sql-type jdbc-type="VARCHAR" hibernate-type="java.lang.String"/>
+        <sql-type jdbc-type="NUMERIC" hibernate-type="java.lang.Long" />
+        <sql-type jdbc-type="INTEGER" hibernate-type="java.lang.Integer" />
+        <sql-type jdbc-type="DECIMAL" hibernate-type="java.lang.Double" />
+    </type-mapping>
+    <table-filter match-name='AGENT' package="cn.com.projectName.moduleName.model"/>
+</hibernate-reverse-engineering>

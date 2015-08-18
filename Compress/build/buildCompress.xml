@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".">
+  <property file="config/build.properties" />
+  <property name="yuicompressor.path" location="${buildResource.dir}/lib/AntLib/yuicompressor.jar" />
+  <property name="uglifyjs.dir" value="${buildResource.dir}/lib/AntLib" />
+  <property name="charset" value="utf-8" />
+  <path id="uglifyjs-ant-classpath">
+    <fileset dir="${uglifyjs.dir}">
+      <include name="uglifyjs.jar" />
+    </fileset>
+  </path>
+  <!--以下内容name在jar包中写死，改变会报错-->
+  <taskdef name="uglify" classname="uglify.ant.UglifyTask">
+    <classpath refid="uglifyjs-ant-classpath" />
+  </taskdef>
+  <!--合并js-->
+  <target name="concatJs" />
+  <!--合并css-->
+  <target name="concatCss" />
+  <!--压缩js-->
+  <target name="uglify" depends="concatJs" description="uglify sources." />
+  <!--压缩css-->
+  <target name="minifyCss" depends="concatCss" />
+  <!-- 重命名css,暂未实现 -->
+  <target name="rename" />
+  <!-- 删除合并文件 -->
+  <target name="delete" />
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-8-17 11:22:33 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="cn.com.projectName.moduleName.model.Agent" table="AGENT">
+        <id name="agentid" type="java.lang.String">
+            <column name="AGENTID" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="32" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project name="createPojo" default="createPojo">
+	<!-- 引入配置文件 -->
+	<property file="config/build.properties" />
+	
+	<path id="hibernate.path">
+		<pathelement location="${hibernate.dir}/hibernate3.jar" />
+		<fileset dir="${hibernate.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<path id="all.lib.path">
+		<path refid="hibernate.path" />
+		<pathelement location="${build.dir}" />
+	</path>
+	<target name="configConnection">
+		<echo message="Start configuring the database connection. Please wait..." />
+		<java classname="cn.com.autoCreate.ConfigConnection" fork="true">
+			<classpath>
+				<path location="${lib.dir}/sandi-autoCreate.jar"></path>
+			</classpath>
+		</java>
+		<echo message="End up configuring the database connection." />
+	</target>
+	<taskdef name="hibernatetool"
+	    classname="org.hibernate.tool.ant.HibernateToolTask"
+	    classpathref="all.lib.path">
+	</taskdef>
+	<target name="hbm2hbmxml">
+		<echo message="Start creating .hbm.xml files. Please wait..." />
+	    <mkdir dir="hibernate/hbm_xml"/>
+		<!--
+		<taskdef name="hbm2hbmxml" classname="org.hibernate.tool.ant.HibernateToolTask"
+			classpathref="all.lib.path" />
+		
+			<hbm2hbmxml destdir="hibernate">
+				<jdbcconfiguration propertyfile="hibernate.properties"				
+					packagename="cn.com.sandi.cc.agent.model" />
+					packagename="cn.com.sandi.projectName.moduleName.model" />
+			<hbm2hbmxml />
+		</hbm2hbmxml>
+		-->
+		<hibernatetool destdir="hibernate/hbm_xml">
+		 	<jdbcconfiguration propertyfile="${buildconfig.dir}/hibernate.properties"  
+		 		revengfile="hibernate/hibernate.reveng.xml" 		 		
+		 		detectmanytomany="true">
+			</jdbcconfiguration>	
+		    <hbm2hbmxml />
+		</hibernatetool>
+		
+		<echo message="End up creating .hbm.xml files." />
+	</target>
+	<target name="hbm2cfgxml">
+		<echo message="Start creating .cfg.xml files. Please wait..." />
+		<taskdef name="hbm2cfgxml" classname="org.hibernate.tool.ant.HibernateToolTask"
+			classpathref="all.lib.path" />
+		<hbm2cfgxml destdir="hibernate">
+			<jdbcconfiguration propertyfile="${buildconfig.dir}/hibernate.properties"/>
+			<hbm2cfgxml />
+		</hbm2cfgxml>
+		<echo message="End up creating .cfg.xml files." />
+	</target>
+	<target name="configXML">
+		<echo message="Start configXML. Please wait..." />
+		<java classname="cn.com.autoCreate.ConfigureHbmCfg" fork="true">
+			<classpath>
+				<path location="${lib.dir}/sandi-autoCreate.jar"></path>
+			</classpath>
+		</java>
+		<echo message="Complete the configuration!" />
+	</target>
+	<target name="hbm2java">
+		<echo message="Start creating Pojo files. Please wait..." />
+		<taskdef name="hbm2java" classname="org.hibernate.tool.ant.HibernateToolTask" 
+			classpathref="all.lib.path" />
+		<hbm2java destdir="${src.dir}">
+			<configuration configurationfile="hibernate/hibernate.cfg.xml" />
+			<hbm2java jdk5="true" ejb3="true" />
+		</hbm2java>
+		<echo message="End up creating Pojo files." />
+	</target>
+	<target name="configPojo">
+		<echo message="Start configuring Pojo files. Please wait..." />
+		<java classname="cn.com.autoCreate.ConfigurePojoAnnotate"
+			fork="true">
+			<classpath>
+				<path location="${lib.dir}/sandi-autoCreate.jar"></path>
+			</classpath>
+		</java>
+		<echo message="End up configuring Pojo files." />
+	</target>
+	<target name="createPojo"
+		depends="configConnection,hbm2hbmxml,hbm2cfgxml,configXML,hbm2java">
+		<!--<delete dir="hibernate" />-->
+		<echo message="完成！请刷新项目。" />
+	</target>
+	<target name="createPojoWithAutoPK"
+		depends="configConnection,hbm2hbmxml,hbm2cfgxml,configXML,hbm2java,configPojo">
+		<!--<delete dir="hibernate" />-->
+		<echo message="完成！请刷新项目。" />
+	</target>
+</project>

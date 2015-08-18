@@ -18,10 +18,9 @@ public class CleanFile
 	{
 	}
 
-	public void cleanBuildCompressXml()
-	{
-		try
-		{
+	public void cleanBuildCompressXml(){
+		
+		try{
 			SAXBuilder saxbuilder = new SAXBuilder();
 			File file = new File("buildCompress.xml");
 			if (file.exists())
@@ -29,8 +28,8 @@ public class CleanFile
 				Document document = saxbuilder.build(file);
 				Element element = document.getRootElement();
 				List list = element.getChildren("target");
-				for (int i = 0; i < list.size(); i++)
-				{
+				for (int i = 0; i < list.size(); i++){
+					
 					Element element1 = (Element)list.get(i);
 					element1.removeContent();
 				}
@@ -38,17 +37,14 @@ public class CleanFile
 				XMLOutputter xmloutputter = new XMLOutputter();
 				xmloutputter.setFormat(Format.getPrettyFormat().setEncoding("UTF-8"));
 				xmloutputter.output(document, new FileOutputStream("buildCompress.xml"));
-			} else
-			{
+				
+			} else{
 				System.out.println("没有找到对应配置文件！");
 			}
 		}
-		catch (IOException ioexception)
-		{
+		catch (IOException ioexception){			
 			ioexception.printStackTrace();
-		}
-		catch (JDOMException jdomexception)
-		{
+		} catch (JDOMException jdomexception){			
 			jdomexception.printStackTrace();
 		}
 	}
